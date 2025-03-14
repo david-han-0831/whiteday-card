@@ -57,17 +57,20 @@ export default function Card3D({ card, isActive, offset, zIndex }: Card3DProps) 
           style={{ backfaceVisibility: "hidden" }}
         >
           <div className="relative w-full h-3/5">
-            <div className="absolute inset-0 bg-amber-200 animate-pulse flex items-center justify-center">
-              {!isImageLoaded && <span className="text-amber-700">Loading image...</span>}
+            <div className="absolute inset-0 flex items-center justify-center">
+              {!isImageLoaded && <span className="text-amber-700">이미지 로딩 중...</span>}
             </div>
-            <Image
-              src={card.image || "/placeholder.svg"}
-              alt={card.title}
-              fill
-              style={{ objectFit: "cover" }}
-              onLoad={() => setIsImageLoaded(true)}
-              className={`transition-opacity duration-500 ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
-            />
+            <div className="relative w-full h-full">
+              <Image
+                src={card.image || "/placeholder.svg"}
+                alt={card.title}
+                width={800}
+                height={600}
+                style={{ objectFit: "contain", maxHeight: "100%", maxWidth: "100%" }}
+                onLoad={() => setIsImageLoaded(true)}
+                className={`transition-opacity duration-500 w-auto h-auto mx-auto ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
+              />
+            </div>
           </div>
           <div className="p-6">
             <h3 className="text-xl md:text-2xl font-bold text-amber-800 mb-3">{card.title}</h3>

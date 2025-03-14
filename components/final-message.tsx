@@ -34,7 +34,7 @@ export default function FinalMessage() {
           <Heart size={40} className="text-pink-400" />
         </motion.div>
 
-        <h2 className="text-3xl md:text-5xl font-bold text-amber-800 mb-6">사랑하는 예은에게</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-amber-800 mb-6">사랑하는 예은아</h2>
 
         <div className="w-20 h-1 bg-amber-300 mx-auto mb-8 rounded-full"></div>
 

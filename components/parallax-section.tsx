@@ -56,19 +56,22 @@ export default function ParallaxSection({ title, subtitle, message, imageId, ali
 
           {/* Image */}
           <motion.div className="w-full md:w-1/2 relative" style={{ y, opacity }}>
-            <div className="relative h-64 md:h-96 rounded-xl overflow-hidden shadow-xl">
-              <div className="absolute inset-0 bg-amber-200 animate-pulse flex items-center justify-center">
-                {!isImageLoaded && <span className="text-amber-700">Loading image...</span>}
+            <div className="relative h-64 md:h-96">
+              <div className="absolute inset-0 flex items-center justify-center">
+                {!isImageLoaded && <span className="text-amber-700">이미지 로딩 중...</span>}
               </div>
-              <Image
-                src={getGoogleDriveImageUrl(imageId)}
-                alt={title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                style={{ objectFit: "cover" }}
-                onLoad={() => setIsImageLoaded(true)}
-                className={`transition-opacity duration-500 ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
-              />
+              <div className="relative w-full h-full">
+                <Image
+                  src={getGoogleDriveImageUrl(imageId)}
+                  alt={title}
+                  width={800}
+                  height={600}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  style={{ objectFit: "contain", maxHeight: "100%", maxWidth: "100%" }}
+                  onLoad={() => setIsImageLoaded(true)}
+                  className={`transition-opacity duration-500 w-auto h-auto mx-auto ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
+                />
+              </div>
             </div>
           </motion.div>
         </div>
